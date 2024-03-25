@@ -1,6 +1,7 @@
-import dbClient from "../utils/dbClient";
-import redisClient from "../utils/redisClient";
-import mongoDBCore from "mongodb/lib/core"
+import dbClient from "../utils/dbClient.js";
+import redisClient from "../utils/redisClient.js";
+import mongoDBCore from "mongodb"
+
 
 class TokenAuth {
     init(req, tokenName) {

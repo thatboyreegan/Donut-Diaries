@@ -1,11 +1,11 @@
-import BasicAuth from "../auth/basicAuth";
-import tokenAuth from "../auth/tonekAuth";
-import redisClient from "../utils/redisClient";
+import BasicAuth from "../auth/basicAuth.js";
+import tokenAuth from "../auth/tonekAuth.js";
+import redisClient from "../utils/redisClient.js";
 import { v4 } from "uuid";
 
 
-class AuthController {
-    async Connect(req, res) {
+const AuthController = {
+    async connect(req, res) {
         const { authorization } = req.headers;
 
         if(!authorization.startsWith('Basic ')) {
@@ -29,7 +29,7 @@ class AuthController {
         res.status(200).json({ token });
     
         return;
-    }
+    },
 
     async disconnect(req, res) {
         const user = tokenAuth.getUser(req);
@@ -45,6 +45,6 @@ class AuthController {
         res.status(204).json();
         return;
     }
-}
+};
 
 export default AuthController;

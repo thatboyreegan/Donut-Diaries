@@ -1,5 +1,5 @@
 import sha1 from 'sha1';
-import dbClient from '../utils/dbClient';
+import dbClient from '../utils/dbClient.js';
 
 class BasicAuth {
     constructor(basicAuthHeader) {
@@ -32,7 +32,7 @@ class BasicAuth {
         if(this.userCredentials.length === 0) return null;
 
         const [email, password] = this.userCredentials;
-        const user = await dbClient.Users.findOne({ email });
+        const user = await dbClient.users.findOne({ email });
 
         if (!user) return null;
         if (sha1(password) !== user.password) return null;

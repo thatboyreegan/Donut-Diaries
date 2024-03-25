@@ -1,4 +1,3 @@
-import exp from "constants";
 import { createClient } from "redis";
 import { promisify } from "util";
 

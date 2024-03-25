@@ -1,5 +1,6 @@
-const express = require('express');
-const { default: router } = require('./routes');
+import express from "express";
+import router from "./routes/index.js";
+
 
 const port = process.env.PORT ? process.env.PORT : 5000;
 
@@ -10,6 +11,6 @@ app.use(express.json());
 app.use(router);
 
 
-app.listen(port, (port) => {
+app.listen(port, () => {
     console.log(`express server is live at port ${port}` );
 });

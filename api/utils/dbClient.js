@@ -1,4 +1,4 @@
-import MongoClient from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 class DBClient {
     constructor() {
@@ -10,13 +10,18 @@ class DBClient {
 
         this.client = new MongoClient(url, {useUnifiedTopology: true})
 
-        (async () => {
-            this.db = await this.client.db(this.dbName);
-            this.users = this.db.collection('Users');
-            this.orders = this.orders.collection('orders');
-            this.menus = this.db.collection('menus');
-            this.food = this.db.collection('food');
-        })();
+        
+            try {
+                this.client.connect();
+                this.db = this.client.db(this.dbName);
+                this.users = this.db.collection('users');
+                this.orders = this.db.collection('orders');
+                this.menus = this.db.collection('menus');
+                this.food = this.db.collection('food');
+            } catch (error) {
+                console.log(error)
+            }
+        
 
     }
 

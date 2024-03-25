@@ -1,8 +1,9 @@
-import tokenAuth from "../auth/tonekAuth";
-import dbClient from "../utils/dbClient";
+import tokenAuth from "../auth/tonekAuth.js";
+import dbClient from "../utils/dbClient.js";
 import sha1 from 'sha1';
 
-class UsersController {
+
+const UsersController = {
     async register(req, res) {
         const { username, email, password } = req.body;
 
@@ -20,7 +21,7 @@ class UsersController {
             return;
         }
 
-        const user = await dbClient.Users.findOne({email});
+        const user = await dbClient.users.findOne({email});
 
         if (user) {
             res.status(401).json({error: 'user already exists'});
@@ -29,7 +30,7 @@ class UsersController {
 
         const hashedPassword = sha1(password);
 
-        const result  = await dbClient.Users.insertOne({
+        const result  = await dbClient.users.insertOne({
             username,
             email,
             password: hashedPassword,
@@ -42,7 +43,7 @@ class UsersController {
             email
         });
         return;
-    }
+    },
 
     async login(req, res) {
         const {email, password} = req?.body;
@@ -57,7 +58,7 @@ class UsersController {
             return;
         }
 
-        const user = await dbClient.Users.findOne({email});
+        const user = await dbClient.users.findOne({email});
 
         if(!user) {
             res.status(400).json({error: 'User does not exist'});
@@ -69,14 +70,14 @@ class UsersController {
             return;
         }
 
-        const userId = user.insertedId.toString();
+        const userId = user.insertedId;
         res.status(200).json({
             id: userId,
             email,
             username: user.username
         });
         return;
-    }
+    },
 
     async getMe(req, res) {
         const user = await tokenAuth.getUser(req);
@@ -96,6 +97,6 @@ class UsersController {
         );
         return;
     }
-}
+};
 
 export default UsersController;

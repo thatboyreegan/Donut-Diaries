@@ -1,0 +1,27 @@
+{
+    "name": "Donut-Diaries",
+    "version": "1.0.0",
+    "description": "An app to help in ordering and creating tickets",
+    "type": "module",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "test": "mocha",
+        "lint": "eslint ."
+    },
+    "keywords": [
+        "Donut",
+        "Diaries"
+    ],
+    "author": "Reagan Odhiambo",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.17.1",
+        "mongodb": "^4.17.2",
+        "sha1": "^1.1.1"
+    },
+    "devDependencies": {
+        "eslint": "^8.3.0",
+        "mocha": "^10.3.0"
+    }
+}
