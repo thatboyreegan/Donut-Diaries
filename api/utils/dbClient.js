@@ -10,6 +10,43 @@ class DBClient {
 
         this.client = new MongoClient(url, {useUnifiedTopology: true})
 
+        (async () => {
+            this.db = await this.client.db(this.dbName);
+            this.users = this.db.collection('Users');
+            this.orders = this.orders.collection('orders');
+            this.menus = this.db.collection('menus');
+            this.food = this.db.collection('food');
+        })();
+
+    }
+
+    isConnected() {
+        try {
+            this.db.command({ping: 1});
+            return true;
+        } catch (error) {
+            return false;
+        }
+    };
+
+    async Users() {
+        const users = await this.users.countDocuments({});
+        return users;
+    };
+
+    async Orders() {
+        const orders = await this.orders.countDocuments({});
+        return orders;
+    };
+
+    async Menus() {
+        const menus = await this.menus.countDocuments({});
+        return menus;
+    }
+
+    async Food() {
+        const food  = await this.food.countDocuments({});
+        return food;
     }
 }
 
