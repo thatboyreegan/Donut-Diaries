@@ -79,6 +79,8 @@ const FoodController = {
             name: updatedFood.name,
             count
         });
-        return
+        return;
     }
 }
+
+export default FoodController;
