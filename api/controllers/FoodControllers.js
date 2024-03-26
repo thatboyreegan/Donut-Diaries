@@ -32,7 +32,7 @@ const FoodController = {
         );
 
         res.status(201).json({
-            id: food._id,
+            id: food.insertedId,
             name,
             price,
             count
