@@ -1,9 +1,12 @@
 import React from 'react';
 
-const Food = () => {
+const Food = (food) => {
   return (
     <div>
-      <h1>Food</h1>
+      <img>{food.img}</img>
+      <h3>{food.name}</h3>
+      <h3>{food.price}</h3>
+      <p>{food.description}</p>
     </div>
   );
 }

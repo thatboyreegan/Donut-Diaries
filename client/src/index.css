@@ -11,3 +11,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.landingPage {
+  justify-content: center;
+  border-radius: 20px;
+  border-color: black;
+  border: 10px;
+}
