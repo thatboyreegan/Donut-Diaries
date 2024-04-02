@@ -16,8 +16,10 @@
     "author": "Reagan Odhiambo",
     "license": "MIT",
     "dependencies": {
+        "bull": "^4.12.2",
         "express": "^4.17.1",
         "mongodb": "^4.17.2",
+        "redis": "^4.6.13",
         "sha1": "^1.1.1"
     },
     "devDependencies": {
