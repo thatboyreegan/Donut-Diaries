@@ -1,8 +1,15 @@
 import React from 'react';
 import CommonNavBar from '../components/NavBar';
+//import pexels-amanda-hemphill-7440350.png from '../assets'
 
 
 const LandingPage = () => {
+
+  render () {
+    const mystyle = {
+      //backgroundImage: `url${pexels-amanda-hemphill-7440350.png}`
+    }
+  }
   return (
     <div>
     <CommonNavBar></CommonNavBar>
