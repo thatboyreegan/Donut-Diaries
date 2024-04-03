@@ -2,7 +2,7 @@ import dbClient from "../utils/dbClient.js";
 
 const FoodController = {
     async AddFood(req, res) {
-        const {name, price, count} = req.body;
+        const {name, price, count, timeToPrepare} = req.body;
 
         if(!name) {
             res.status(400).json(
@@ -22,6 +22,11 @@ const FoodController = {
             );
             return;
         };
+        if(!timeToPrepare) {
+            res.status(400).json({
+                error: 'Missing time to prepare'
+            })
+        }
 
         const food = await dbClient.food.insertOne(
             {
@@ -33,9 +38,7 @@ const FoodController = {
 
         res.status(201).json({
             id: food.insertedId,
-            name,
-            price,
-            count
+            success: 'Food added successfully'
         });
         return;
     },
@@ -53,7 +56,7 @@ const FoodController = {
         const food = await dbClient.food.findOneAndDelete({name});
 
         res.status(200).json({
-            success: 'Ok'
+            success: 'Food removed successfully'
         })
     },
 
@@ -77,7 +80,26 @@ const FoodController = {
 
         res.status(200).json({
             name: updatedFood.name,
-            count
+            count,
+            success: 'Food details updated successfully'
+        });
+        return;
+    },
+
+    async fetchFood(req, res) {
+        const foodName = req.body?.name;
+
+        if(!foodName) {
+            res.status(400).json({
+                error: 'Missing the name of the food'
+            });
+            return;
+        }
+
+        const food = await dbClient.food.findOne({foodName})
+
+        res.status(200).json({
+            food
         });
         return;
     }

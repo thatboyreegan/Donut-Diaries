@@ -44,6 +44,21 @@ const MenuController = {
         return;
     },
 
+    async fetchMenu(req, res) {
+        const {name} = req.body?.name;
+
+        if(!name) {
+            res.status(400).json({
+                error: 'Missing name of menu'
+            });
+            return;
+        }
+
+        const menu  = await dbClient.food.findOne({name});
+
+        res.status(200).json({menu})
+    }
+
 }
 
 export default MenuController;

@@ -70,9 +70,8 @@ const UsersController = {
             return;
         }
 
-        const userId = user.insertedId;
         res.status(200).json({
-            id: userId,
+            id: user.insertedId,
             email,
             username: user.username
         });

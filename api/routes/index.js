@@ -4,7 +4,7 @@ import Stats from "../controllers/StatsController.js";
 import MenuController from "../controllers/MenuControllers.js";
 import FoodController from "../controllers/FoodControllers.js";
 import OrderController from "../controllers/OrderController.js";
-import express from "express";
+import express, { Router } from "express";
 
 
 const router = express.Router();
@@ -14,8 +14,10 @@ router.post('/login', UsersController.login);
 router.get('/connect', AuthController.connect);
 router.get('/disconnect', AuthController.disconnect);
 router.get('/stats', Stats.stats)
+router.post('/menu', MenuController.fetchMenu)
 router.post('/menu/create', MenuController.addMenu);
 router.post('/menu/delete', MenuController.removeMenu);
+router.post('/food', FoodController.fetchFood)
 router.post('/food/create', FoodController.AddFood);
 router.post('/food/update', FoodController.updateFood);
 router.post('/food/delete', FoodController.removeFood);

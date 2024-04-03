@@ -4,35 +4,29 @@ const orderQueue = new Bull('order queue');
 const ticketQueue = new Bull('ticket queue');
 
 
-const orderQueueProducer = async (data) => {
+const Queues = {
+    async orderQueueProducer (data) {
     await orderQueue.add(data)
-};
-
-const orderQueueProcessor = () => {
-    orderQueue.process(async (job, done) => {
-        console.log('You have succesfully placed your order and the order id is', job.data.id);
+},
+    orderQueueProcessor () {
+    orderQueue.process(async (job) => {
+        console.log('You have succesfully placed your order and the order id is', job.data.ticketNumber);
         const ticket = {
-            ticketId: job.data.id,
-            ticketStatus: 'Active',
-            items: job.data.items,
-            totalPrice: job.data.totalPrice,
-            billSettled: true,
-            approximatedTime: 50
+            ticketId: job.data.ticketId,
+            ticketNumber: job.data.ticketNumber,
+            ticketItems: job.data.ticketItems,
+            totalPrice: job.data.totalPrice
         }
-        /**Implement a prompt input from the vendor that 
-         * indicates acceptance of the order so that the order 
-         * is moved to the ticket queue
-         */
         await ticketQueue.add(ticket);
-        console.log('Your order has been accepted...Preparation will begin shortly')
-        done();
-    })
+        console.log('Your order has been accepted...Preparation will begin shortly');
+        return ticket;  
+    });
+},
+    ticketQueueProcessor() {
+        ticketQueue.process(async (job) => {
+            console.log(`Processing your order now...`);
+        })
+    }
 }
 
-const ticketQueueProcessor = () => {
-    ticketQueue.process(async (job, done) => {
-        job.progress(0);
-
-        setTimeout()
-    })
-}
+export default Queues;

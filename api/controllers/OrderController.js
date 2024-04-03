@@ -1,9 +1,10 @@
 import dbClient from "../utils/dbClient.js";
+import Queues from "../queues.js";
 
 
 const OrderController = {
     async createOrder(req, res) {
-        const {orderId, items, totalPrice} = req.body;
+        const {orderId, items, totalPrice} = req?.body;
 
         if (!orderId || !items || !totalPrice ) {
             res.status(404).json({
@@ -16,11 +17,22 @@ const OrderController = {
             orderId,
             items,
             totalPrice
-        })
-
-        res.status(400).json({
-            order
         });
+        console.log(order)
+
+        if (order.acknowledged) {
+            Queues.orderQueueProducer({
+                ticketId: order.insertedId,
+                ticketNumber: orderId,
+                TicketItems: items,
+                totalPrice: totalPrice
+            });
+            Queues.orderQueueProcessor();// this can only be initiated once and it rusn for all the tickets
+            res.status(200).json({
+                success: `order ${orderId} placed successfully`
+            });
+            return;
+        };
         return;
     },
 
