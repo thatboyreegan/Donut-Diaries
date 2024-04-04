@@ -5,16 +5,15 @@ import CommonNavBar from '../components/NavBar';
 
 const LandingPage = () => {
 
-  render () {
-    const mystyle = {
-      //backgroundImage: `url${pexels-amanda-hemphill-7440350.png}`
-    }
-  }
+  
+
   return (
-    <div>
+    <div style={{
+          backgroundColor: 'green'
+        }}>
     <CommonNavBar></CommonNavBar>
       <header>
-        <div className='landingPage'>
+        <div className='landingPage' >
             <h2>Welcome to Donut dairies!</h2>
             <h3>We are committed to ensuring your donut cravings attended to without any hitches whatsoever.</h3>
             <h1>Login</h1>
