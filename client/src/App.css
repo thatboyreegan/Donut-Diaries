@@ -29,9 +29,69 @@
 }
 
 
+.landingPage {
+  justify-content: center;
+  border-radius: 0px;
+  border-color: black;
+  border: 10px;
+  background-color: #D8AEAE;
+  max-width: 2;
+  max-height: inherit;
+  display: grid;
+}
 
-h1 {
-  color: red;
+.nav {
+  display: flex;
+  max-width: 100%;
+  background-color: antiquewhite;
+  margin: 15px;
+}
+
+.sign-up, .sign-in, .home, .menu, .basket, .search{
+  padding: 10px;
+}
+
+.text-component {
+  justify-self: left;
+  text-align: left;
+  border: red;
+  border-style: solid;
+  border-width: thick;
+  margin: 10px;
+}
+
+.ellipse {
+  border: yellow;
+  border-style: solid;
+  border-radius: 50%;
+  height: 500px;
+  width: 500px;
+  justify-self: center;
+  background-color: white;
+}
+.sample-order {
+  border: green;
+  border-style: dashed;
+  margin: 30px;
+}
+
+.carousel {
+  border: blue;
+  border-style: solid;
+  background-color: aquamarine;
+  display: flex;
+  margin: 30px;
+}
+
+.food-item {
+  padding: 30px;
+  background-color: wheat;
+  width: 30%;
+  border-color: black;
+  border-style: solid;
+  height: 50px;
+  margin: 20px;
+  border-radius: 10%;
 }
 
 @keyframes App-logo-spin {
@@ -41,4 +101,28 @@ h1 {
   to {
     transform: rotate(360deg);
   }
+}
+
+.customer-reviews {
+  background-color: azure;
+  border-color: aquamarine;
+  border-style: dotted;
+  margin: 20px;
+}
+
+.review {
+  border-style: solid;
+  border-color: red;
+  border-width: thin;
+  padding: 20px;
+  margin: 10px;
+}
+
+.footer {
+  background-color: purple;
+  display: flex;
+}
+
+.about, .support, .blog, .media-icons {
+  padding: 50px;
 }
