@@ -25,37 +25,52 @@ export const UserContextProvider=  () => {
 
     const updateUserInfo = useCallback((info) => {
         setUser(info);
-    });
+    },[]);
 
     const updateRegisterInfo = useCallback((info) => {
         setRegisterInfo(info);
-    });
+    }, []);
 
     const updateLoginInfo = useCallback((info) => {
         setLoginInfo(info)
-    });
+    }, []);
 
     const registerUser = useCallback(async (e) => {
         e.preventDefault();
         setIsRegisterLoading(true);
         setRegisterError(null);
 
-        const res = await postArequest(`${baseUrl}/register`, JSON.stringify(registerInfo));
-        setIsRegisterLoading(false);
-        if (res.error) {
-            return setRegisterError(res);
+        try {
+            const res = await postArequest(`${baseUrl}/register`, JSON.stringify(registerInfo));
+            if (res.error) {
+                return setRegisterError(res);
+            }
+            setUser(res)
+        } catch (error) {
+            console.log('error when signing up:', error)
+            setRegisterError(error);
+            
+        } finally {
+            setIsRegisterLoading(false);
         }
-    });
+    }, [registerInfo]);
 
     const loginUser = useCallback(async (e) => {
         e.preventDefault();
         setLoginLoading(true);
         setLoginError(null);
 
-        const res = await postArequest(`${baseUrl}/login`, JSON.stringify(loginInfo));
-        setLoginLoading(false);
-        if (res.error) return setLoginError(res);
-    })
+        try {
+            const res = await postArequest(`${baseUrl}/login`, JSON.stringify(loginInfo));
+            if (res.error) return setLoginError(res);
+            setUser(res);
+        } catch (error) {
+            console.log('Error when logging in:', error);
+            setLoginError(error);
+        } finally {
+            setLoginLoading(false);
+        }
+    }, [loginInfo])
 
   return (
     <UserContext.Provider value={{
