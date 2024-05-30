@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const LandingPage = () => {
@@ -8,12 +9,16 @@ const LandingPage = () => {
   return (
     <div className='landingPage'>
     <div className='nav'>
-    <div className='home'><h1>Home</h1></div>
+    <div className='home'>
+    <h1>Home</h1></div>
     <div className='menu'><h1>Menu</h1></div>
     <div className='search'><h1>search</h1></div>
     <div className='basket'><h1>basket</h1></div>
-    <div className='sign-up'><h1>sign up</h1></div>
-    <div className='sign-in'><h1>sign in</h1></div>
+    <div className='sign-up'>
+    <Link to='/register'><h1>sign up</h1></Link>
+    </div>
+    <div className='sign-in'>
+    <Link to='/login'><h1>sign in</h1></Link></div>
     </div>
     <div className='text-component'>
     <h2>This is the vision statement</h2>

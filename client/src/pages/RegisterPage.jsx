@@ -2,26 +2,30 @@ import React from 'react';
 
 const RegisterPage = () => {
   return (
-    <div style={{
-      backgroundColor: 'lightblue',
-      height: '600rem',
-      width: 'auto',
-      justifyContent: 'center',
-    }}>
-    <div style={{
-      backgroundColor: 'beige',
-      height: '25rem',
-      width: '25rem',
-      border: '2px solid',
-      borderRadius: '15px'
-    }}>
-    <h1>Sign up for an account</h1>
-      <input type='text' placeholder='username'></input>
-      <input type='text' placeholder='email'></input>
-      <input type='text' placeholder='password'></input>
-      <button type='submit'>Sign up</button>
-    </div>
-      
+    <div className='register-page'>
+      <form className='register-form'>
+      <div className='username'>
+      <label for='username'>Username</label>
+        <input id='username' type='text' placeholder='username'/>
+      </div>
+      <div className='email'>
+        <label for='email'>Email:</label>
+        <input for='email' type='email' placeholder='Email'/>
+      </div>
+      <div className='password'>
+        <label for='password'>Password:</label>
+        <input for='password' type='password' placeholder='*******'/>
+      </div>
+      <div className='confirm-password'>
+      <label for='confirm-password'>Confirm password:</label>
+      <input id='confirm-password' type='password' placeholder='*******'/>
+      </div>
+      <div className='terms-of-service'>
+        <input type='checkbox'/>
+        <label>Agree to <em>Terms of services</em> and the <em>Privacy policy</em></label>
+      </div>
+      <button id='sign-up-button'>Sign up</button>
+      </form>
     </div>
   );
 }

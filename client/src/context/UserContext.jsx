@@ -12,12 +12,15 @@ export const UserContextProvider=  () => {
         username: '',
         email: '',
         password: '',
+        confirmPassword: '',
+        termsOfService: false,
     });
     const [loginError, setLoginError] = useState(null);
     const [isLoginLoading, setLoginLoading] = useState(false);
     const [loginInfo, setLoginInfo] = useState({
         email: '',
         password: '',
+        rememberMe: false,
     });
 
     const updateUserInfo = useCallback((info) => {
