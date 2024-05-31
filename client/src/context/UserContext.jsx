@@ -1,9 +1,9 @@
 import React, { createContext, useCallback, useState } from 'react';
 import { postArequest, baseUrl } from '../services';
 
-const UserContext =  createContext();
+export const UserContext =  createContext();
 
-export const UserContextProvider=  () => {
+export const UserContextProvider =  ({children}) => {
 
     const [user, setUser] = useState(null);
     const [registerError, setRegisterError] = useState(null);
@@ -88,9 +88,8 @@ export const UserContextProvider=  () => {
         updateUserInfo,
 
     }}>
-      
+      {children}
     </UserContext.Provider>
   );
 }
 
-export default UserContext;

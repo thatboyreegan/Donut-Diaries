@@ -13,6 +13,9 @@ const OrderController = {
             return;
         }
 
+        //Add the orderid to the orders queue
+
+
         const order = await dbClient.orders.insertOne({
             orderId,
             items,
@@ -44,6 +47,9 @@ const OrderController = {
                 error: 'Missing order Id'
             });
         }
+
+        //remove the order id from the orders array
+
 
         const order = await dbClient.orders.findOneAndDelete({orderId});
         

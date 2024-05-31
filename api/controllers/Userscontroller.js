@@ -5,7 +5,7 @@ import sha1 from 'sha1';
 
 const UsersController = {
     async register(req, res) {
-        const { username, email, password } = req.body;
+        const { username, email, password, termsOfService } = req.body;
 
         if(!username) {
             res.status(400).json({error: 'Missing username'});
@@ -34,6 +34,7 @@ const UsersController = {
             username,
             email,
             password: hashedPassword,
+            termsOfService
         });
         const userId = result.insertedId.toString();
 
