@@ -1,0 +1,52 @@
+ .header {
+    display: flex;
+    height: 34vw;
+    margin: 30px auto;
+    gap: 10px;
+    background-color: rebeccapurple;
+ }
+ 
+ .header-contents-right {
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+}
+
+.hot-deal {
+    display: flex;
+    flex-direction: column;
+    background-color: antiquewhite;
+    border-radius: 20px;
+    align-items: center;
+    width: 60%;
+}
+.item-list li{
+    list-style: none;
+    padding: 2px;
+    
+}
+
+.hot-deal .price-and-order{
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.hot-deal .price-and-order p{
+    color: tomato;
+}
+
+.header-contents-left{
+    display: block;
+    flex-direction: row;
+    border-radius: 30px;
+    height: inherit;
+    background-color: bisque;
+}
+
+.header-contents-left img{
+    width: 150px;
+    border-radius: inherit;
+}

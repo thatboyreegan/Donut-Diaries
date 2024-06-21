@@ -1,0 +1,9 @@
+.package-image{
+    width: 100px;
+    border-radius: 10px;
+}
+
+.packages-display{
+    display: flex;
+    justify-content: space-between;
+}

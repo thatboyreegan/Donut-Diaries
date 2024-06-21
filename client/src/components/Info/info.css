@@ -1,0 +1,32 @@
+.info-bar{
+    height: 10vw;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    background-color: red;
+}
+.promocodes{
+    display: flex;
+    align-items: center;
+    border-left: 1px dashed #303030;
+    padding: 20px;
+}
+.promocodes img{
+    width: 100px;
+}
+
+.promo-info{
+    align-items: center;
+    border-left: 1px dashed #303030;
+    padding: 20px 0px 0px 20px;
+}
+
+.overall-rating{
+    display: flex;
+    border-left: 1px dashed #303030;
+    padding: 20px;
+}
+
+.overall-rating img{
+    width: 20%;
+}

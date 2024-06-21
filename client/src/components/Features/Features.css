@@ -1,0 +1,13 @@
+.feature img{
+    width: 50px;
+}
+
+.feature p{
+    color: #303030;
+}
+
+.features {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
