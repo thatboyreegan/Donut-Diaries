@@ -47,7 +47,7 @@ const UsersController = {
     },
 
     async login(req, res) {
-        const {email, password} = req?.body;
+        const { email, password } = req?.body;
 
         if(!email) {
             res.status(400).json({error: 'Missing email'});

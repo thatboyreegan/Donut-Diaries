@@ -2,7 +2,7 @@ import dbClient from "../utils/dbClient.js";
 
 const FoodController = {
     async AddFood(req, res) {
-        const {name, price, count, timeToPrepare} = req.body;
+        const {name, price, count, category, menu } = req.body;
 
         if(!name) {
             res.status(400).json(

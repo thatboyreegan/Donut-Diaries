@@ -14,10 +14,10 @@ router.post('/login', UsersController.login);
 router.get('/connect', AuthController.connect);
 router.get('/disconnect', AuthController.disconnect);
 router.get('/stats', Stats.stats)
-router.post('/menu', MenuController.fetchMenu)
+router.get('/menu', MenuController.fetchMenu)
 router.post('/menu/create', MenuController.addMenu);
 router.post('/menu/delete', MenuController.removeMenu);
-router.post('/food', FoodController.fetchFood)
+router.get('/food', FoodController.fetchFood)
 router.post('/food/create', FoodController.AddFood);
 router.post('/food/update', FoodController.updateFood);
 router.post('/food/delete', FoodController.removeFood);
